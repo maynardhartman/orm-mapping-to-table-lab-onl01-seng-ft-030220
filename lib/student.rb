@@ -38,12 +38,12 @@ class Student
   end
   
   def self.create(hash)
-    student = Student.new(hash.name, hash.grade)
+    student = Student.new(hash[name], hash[grade])
     binding.pry
     sql = <<-SQL
       INSERT INTO 'students'(name, grade) VALUES (?, ?);
       SQL
-    DB[:conn].execute(sql, hash.name, hash.grade)
+    DB[:conn].execute(sql, hash[name], hash[grade])
     student.save
     student 
   end
