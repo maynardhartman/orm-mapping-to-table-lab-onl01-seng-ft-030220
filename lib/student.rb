@@ -38,7 +38,8 @@ class Student
   end
   
   def self.create(hash)
-    student = Student.new(hash['name'], hash['grade'])
+    values = hash.values
+    student = Student.new(values[0], values[1])
     binding.pry
     sql = <<-SQL
       INSERT INTO 'students'(name, grade) VALUES (?, ?);
