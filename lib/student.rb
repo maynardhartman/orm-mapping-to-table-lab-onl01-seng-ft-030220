@@ -41,10 +41,6 @@ class Student
     values = hash.values
     student = Student.new(values[0], values[1])
     student.save
-    sql = <<-SQL
-      INSERT INTO 'students'(name, grade) VALUES (?, ?);
-      SQL
-    DB[:conn].execute(sql, values[0], values[1])
     student 
   end
 end
